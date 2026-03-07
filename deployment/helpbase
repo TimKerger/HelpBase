@@ -1,0 +1,6 @@
+# give helpbase user permission to start/stop/restart helpbase systemd service
+
+%helpbase ALL=NOPASSWD: /bin/systemctl start helpbase.target
+%helpbase ALL=NOPASSWD: /bin/systemctl stop helpbase.target
+%helpbase ALL=NOPASSWD: /bin/systemctl restart helpbase.target
+%helpbase ALL=NOPASSWD: /usr/local/bin/cwctl
