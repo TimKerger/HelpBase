@@ -13,7 +13,6 @@ import PasswordRequirements from './PasswordRequirements.vue';
 import { isValidPassword } from 'shared/helpers/Validators';
 import GoogleOAuthButton from '../../../../../components/GoogleOauth/Button.vue';
 import { register } from '../../../../../api/auth';
-import * as CompanyEmailValidator from 'company-email-validator';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -39,9 +38,6 @@ const rules = {
     email: {
       required,
       email,
-      businessEmailValidator(value) {
-        return CompanyEmailValidator.isCompanyEmail(value);
-      },
     },
     password: {
       required,
@@ -57,9 +53,9 @@ const globalConfig = computed(() => store.getters['globalConfig/get']);
 
 const termsLink = computed(() =>
   t('REGISTER.TERMS_ACCEPT')
-    .replace('https://www.chatwoot.com/terms', globalConfig.value.termsURL)
+    .replace('https://www.helpbase.app/terms', globalConfig.value.termsURL)
     .replace(
-      'https://www.chatwoot.com/privacy-policy',
+      'https://www.helpbase.app/privacy',
       globalConfig.value.privacyURL
     )
 );
