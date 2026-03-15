@@ -390,6 +390,8 @@ function setup_helpbase() {
   sed -i -e '/POSTGRES_USERNAME/ s/=.*/=helpbase/' .env
   sed -i -e "/POSTGRES_PASSWORD/ s/=.*/=$pg_pass/" .env
   sed -i -e '/RAILS_ENV/ s/=.*/=$RAILS_ENV/' .env
+  sed -i -e '/MAILER_SENDER_EMAIL/ s/=.*/=HelpBase <noreply@helpbase.app>/' .env
+  sed -i -e '/SMTP_DOMAIN/ s/=.*/=helpbase.app/' .env
   echo -en "\nINSTALLATION_ENV=linux_script" >> ".env"
 
   rake assets:precompile RAILS_ENV=production NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider"
